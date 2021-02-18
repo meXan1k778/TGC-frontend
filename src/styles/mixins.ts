@@ -38,3 +38,9 @@ export const Paragraph = styled.p`
   line-height: 17px;
   margin: 16px 0;
 `;
+
+export const HeadingH2 = styled.h2`
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+`;

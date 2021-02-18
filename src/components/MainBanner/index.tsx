@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { CtaButton, LayoutWrapper, SimpleButton, Paragraph } from '../../styles/mixins';
+import { CtaButton, LayoutWrapper, SimpleButton } from '../../styles/mixins';
 import warzoneLogo from '../../images/warzone-logo.png';
 import tournaments from '../../images/tournaments.png';
 import city from '../../images/city.png';
