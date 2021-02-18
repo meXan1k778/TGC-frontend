@@ -15,9 +15,7 @@ const RecentWinnersWrapper = styled(LayoutWrapper)`
   flex-direction: column;
 `;
 
-const WinnersBlock = styled.div`
-  
-`;
+const WinnersBlock = styled.div``;
 
 const WinnersTitle = styled(HeadingH2)`
   margin-bottom: 31px;
