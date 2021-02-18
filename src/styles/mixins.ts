@@ -36,10 +36,11 @@ export const CtaButton = styled.button`
 export const Paragraph = styled.p`
   font-size: 14px;
   line-height: 17px;
-  margin: 16px 0;
+  margin: 13px 0;
 `;
 
 export const HeadingH2 = styled.h2`
+  margin: 0;
   color: #fff;
   font-weight: normal;
   text-align: center;
