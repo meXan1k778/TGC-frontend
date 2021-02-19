@@ -4,10 +4,12 @@ import { LayoutWrapper, HeadingH2 } from '../../styles/mixins';
 import DescriptionItem from '../DescriptionItem';
 import { IDescriptionText } from './types';
 import { mockedData } from './mockedData';
+import bgGradient from '../../images/bg-gradient.svg';
 
 const StyledDescription = styled.div`
   padding: 10px 0 87px;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(20, 0, 0, 0.76) 0%, #000000 100%);
+  background: url(${bgGradient}) no-repeat;
+  background-size: cover;
 `;
 
 const DescriptionList = styled.div`
