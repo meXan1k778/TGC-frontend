@@ -4,6 +4,7 @@ import { HeadingH2, LayoutWrapper, Paragraph } from '../../styles/mixins';
 import playerImage from '../../images/player.jpg';
 import trophyGoldIcon from '../../images/trophy-gold.svg';
 import circledArrow from '../../images/circled-arrow.svg';
+import carouselBg from '../../images/carousel-bg.png';
 import { mockedFeatures } from './mockedData';
 import { IPlayerFeature } from './types';
 
@@ -24,6 +25,12 @@ const CarouselArrow = styled.img`
   transform: translateY(-50%);
   right: 7%;
   z-index: 1;
+`;
+
+const PlayerCarouselBgImage = styled.img`
+  position: absolute;
+  left: -62px;
+  top: 34px;
 `;
 
 const PlayerCarouselBg = styled.div`
@@ -114,6 +121,7 @@ const PlayersCarousel = () => {
     <StyledPlayerCarousel>
       <LayoutWrapper>
         <PlayerCarouselSlide>
+          <PlayerCarouselBgImage src={carouselBg} alt="carousel background image" />
           <PlayerImageBlock>
             <img src={playerImage} alt="player" />
             <PlayerInfo>
