@@ -7,6 +7,7 @@ import banner1 from '../../images/banner1.jpg';
 import banner2 from '../../images/banner2.jpg';
 import Description from '../Description';
 import Tournament from '../Tournament';
+import PlayersCarousel from '../PlayersCarousel';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
      />
      <Tournament />
      <Description />
+     <PlayersCarousel />
     </div>
   );
 }
