@@ -5,6 +5,7 @@ import MainBanner from '../MainBanner';
 import RecentWinners from '../RecentWinners';
 import banner1 from '../../images/banner1.jpg';
 import banner2 from '../../images/banner2.jpg';
+import Description from '../Description';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
      <FeaturesBanner banner={banner2} title='Payment in 24h'
       text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sem lacinia commodo ac egestas dapibus neque. Orci pulvinar mauris viverra auctor egestas cras amet. '
      />
+     <Description />
     </div>
   );
 }
