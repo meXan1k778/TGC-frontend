@@ -9,6 +9,7 @@ import Description from '../Description';
 import Tournament from '../Tournament';
 import PlayersCarousel from '../PlayersCarousel';
 import Footer from '../Footer';
+import ToTopButton from '../ToTopButton';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
      <Description />
      <PlayersCarousel />
      <Footer />
+     <ToTopButton />
     </div>
   );
 }

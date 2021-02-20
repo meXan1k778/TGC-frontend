@@ -41,11 +41,11 @@ const WinnerItem = styled.div`
   }
 `;
 
-const WinnerCardTitle = styled.p`
+const WinnerCardTitle = styled.p<{ winners: number }>`
   margin: 0 auto 12px;
   font-size: 20px;
   line-height: 24px;
-  color: #F0404C;
+  color: ${({ winners }) => winners > 1 ? '#DBC349' : '#F0404C'};
 `;
 
 const WinnerCardName = styled.h2`
@@ -59,7 +59,7 @@ const WinnerCardName = styled.h2`
 const WinnerCard = ({ place, winners }: IPlace) => {
   return (
     <WinnerCardWrapper multipleWinners={winners.length}>
-      <WinnerCardTitle>{place}</WinnerCardTitle>
+      <WinnerCardTitle winners={winners.length}>{place}</WinnerCardTitle>
       <WinnerCardSeparator />
       <WinnerCardWinners>
         {winners.map(({ id, name, countryLogo }: IWinner) => {
