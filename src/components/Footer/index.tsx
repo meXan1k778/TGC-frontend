@@ -103,8 +103,8 @@ const FooterPolicyText = styled(FooterNavTitle)`
 
 const TrustedGoogleImage = styled.img`
   position: absolute;
-  right: 0;
-  bottom: 40px;
+  right: 20%;
+  top: 90px;
 `;
 
 const FooterPayment = styled.div`
