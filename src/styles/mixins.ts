@@ -33,10 +33,26 @@ export const CtaButton = styled.button`
   }
 `;
 
+export const RegisterButton = styled(CtaButton)`
+  font-size: 20px;
+  line-height: 24px;
+  padding: 12px 83px;
+  background: linear-gradient(0deg, rgba(190, 12, 12, 0.3), rgba(190, 12, 12, 0.3));
+  border: 2px solid #DB4C4C;
+  border-radius: 4px;
+`;
+
 export const Paragraph = styled.p`
   font-size: 14px;
   line-height: 17px;
   margin: 13px 0;
+`;
+
+export const HeadingH1 = styled.h1`
+  font-size: 60px;
+  line-height: 72px;
+  color: #E9DBF0;
+  text-align: center;
 `;
 
 export const HeadingH2 = styled.h2`

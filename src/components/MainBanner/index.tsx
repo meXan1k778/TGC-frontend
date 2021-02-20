@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { CtaButton, LayoutWrapper, SimpleButton } from '../../styles/mixins';
+import { CtaButton, LayoutWrapper, SimpleButton, RegisterButton } from '../../styles/mixins';
 import warzoneLogo from '../../images/warzone-logo.png';
 import tournaments from '../../images/tournaments.png';
 import city from '../../images/city.png';
@@ -49,15 +49,6 @@ const AnnouncementDate = styled.p`
   font-size: 40px;
   line-height: 48px;
   margin: 0 0 20px;
-`;
-
-const RegisterButton = styled(CtaButton)`
-  font-size: 20px;
-  line-height: 24px;
-  padding: 12px 83px;
-  background: linear-gradient(0deg, rgba(190, 12, 12, 0.3), rgba(190, 12, 12, 0.3));
-  border: 2px solid #DB4C4C;
-  border-radius: 4px;
 `;
 
 const ViewAllEvents = styled(SimpleButton)`
