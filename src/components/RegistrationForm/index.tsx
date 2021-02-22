@@ -44,7 +44,7 @@ const LabeledCheckbox = styled.div`
     label {
       position: relative;
       color: #fff;
-      font-family: 'Source Sans Pro', sans-serif;
+      font-family: 'San Francisco', Arial, sans-serif;
 
       &::before {
         content: '';
