@@ -26,7 +26,7 @@ const RegistrationPageHeader = styled(HeadingH1)`
 `;
 
 const RegistrationPageLinks = styled(Paragraph)`
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'San Francisco', Arial, sans-serif;
   font-size: 12px;
   line-height: 14px;
   margin: 0 0 15px;
