@@ -44,7 +44,7 @@ const UserDate = styled(Paragraph)`
   line-height: 14px;
   text-align: center;
   color: #817a84;
-  margin: 0;
+  margin: 0 10px;
   font-family: 'San Francisco', Arial, sans-serif;
   font-weight: 600;
 `;

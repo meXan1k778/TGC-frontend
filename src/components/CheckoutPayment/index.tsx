@@ -71,7 +71,7 @@ const CheckoutPaymentMethod = styled.div`
   justify-content: center;
   margin-top: 27px;
 
-  &:not(:last-child) {
+  img:not(:last-child) {
     margin-right: 10px;
   }
 `;

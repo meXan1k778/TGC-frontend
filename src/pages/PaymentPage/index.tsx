@@ -35,11 +35,16 @@ const PaymentPageHeader = styled(HeadingH1)`
   font-weight: normal;
 `;
 
+const PaymentPageTextWrapper = styled.div`
+  margin: 0 auto 15px;
+`;
+
 const PaymentPageText = styled(Paragraph)`
   font-family: 'San Francisco', Arial, sans-serif;
   font-weight: 700;
-  margin: 0 0 15px;
+  margin: 0;
   z-index: 1;
+  text-align: center;
 `;
 
 const PaymentPageTitle = styled(PaymentPageText)`
@@ -99,7 +104,10 @@ const PaymentPage: React.FC = () => {
         <PaymentPageInnerWrapper>
           <PaymentPageBgImage src={registration} alt='tgc club background' />
           <PaymentPageHeader>Duos #21Y2</PaymentPageHeader>
-          <PaymentPageText>Feb 15, 2021 @ 6pm PT 20 teams per division</PaymentPageText>
+          <PaymentPageTextWrapper>
+            <PaymentPageText>Feb 15, 2021 @ 6pm PT</PaymentPageText>
+            <PaymentPageText>20 teams per division</PaymentPageText>
+          </PaymentPageTextWrapper>
           <TotalPayment title="$25/Person Entry Fee" sum="$ 1,600" sumFirst={false} isBig={false} />
           <RegisteredUserList />
           <PaymentPageTitle>Checkout</PaymentPageTitle>
