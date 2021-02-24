@@ -6,7 +6,6 @@ import city from '../../images/city.png';
 import playerBackground from '../../images/player-bg.png';
 import registration from '../../images/registration.png';
 import TotalPayment from '../../components/TotalPayment';
-import RegisteredUserList from '../../components/RegisteredUserList';
 import CheckoutPayment from '../../components/CheckoutPayment';
 import arrowIcon from '../../images/arrow-down.svg';
 
@@ -45,10 +44,6 @@ const PaymentPageText = styled(Paragraph)`
   margin: 0;
   z-index: 1;
   text-align: center;
-`;
-
-const PaymentPageTitle = styled(PaymentPageText)`
-  margin-top: 50px;
 `;
 
 const ContentWrapper = styled.div`
@@ -109,8 +104,6 @@ const PaymentPage: React.FC = () => {
             <PaymentPageText>20 teams per division</PaymentPageText>
           </PaymentPageTextWrapper>
           <TotalPayment title="$25/Person Entry Fee" sum="$ 1,600" sumFirst={false} isBig={false} />
-          <RegisteredUserList />
-          <PaymentPageTitle>Checkout</PaymentPageTitle>
           <CheckoutPayment />
         </PaymentPageInnerWrapper>
       </PaymentPageWrapper>
