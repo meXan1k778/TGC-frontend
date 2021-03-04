@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import TotalPayment from '../../components/TotalPayment';
-import { RegisterButton, HeadingH1, HeadingH2, LayoutWrapper, Paragraph } from '../../styles/mixins';
+import { ButtonWithBorder, HeadingH1, HeadingH2, LayoutWrapper, Paragraph } from '../../styles/mixins';
 import playerBackground from '../../images/player-bg.png';
 import mainLogo from '../../images/main-logo.svg';
 
@@ -70,7 +70,7 @@ const EmailTemplate: React.FC = () => {
           would have forced it down even if he had absolutely hated it. That's simply the way things worked. She made him a new-fangled drink each day and he took a sip of it
           and smiled, saying it was excellent.
         </PaymentPageText>
-        <RegisterButton>Accept Invitation</RegisterButton>
+        <ButtonWithBorder>Accept Invitation</ButtonWithBorder>
       </EmailTemplateWrapper>
     </StyledEmailTemplate>
   );
