@@ -2,27 +2,6 @@ import styled from 'styled-components';
 import { device } from './constants';
 import { ButtonWithBorder, HeadingH1, Paragraph } from "./mixins";
 
-export const LoginRegistrationPageHeader = styled(HeadingH1)`
-  margin: 81px 0 2px;
-  z-index: 1;
-  font-weight: normal;
-  
-  @media ${device.tablet} {
-    margin: 72px 0;  
-  }
-`;
-
-export const LoginRegistrationPageBgImage = styled.img`
-  width: 70%;
-  position: absolute;
-  top: 125px;
-
-  @media ${device.tablet} {
-    width: auto;
-    top: 136px;
-  }
-`;
-
 export const LoginRegistrationPageLinks = styled(Paragraph)`
   font-family: 'San Francisco', Arial, sans-serif;
   font-size: 12px;

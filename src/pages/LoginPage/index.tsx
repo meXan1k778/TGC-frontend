@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import LoginForm from '../../components/LoginForm';
-import { CtaButton, HeadingH1, LayoutWrapper, Paragraph, ShowOnMobile, ShowOnDesktop } from '../../styles/mixins';
-import { LoginRegistrationPageHeader, LoginRegistrationPageBgImage, LoginRegistrationPageLinks, ButtonWrapper } from '../../styles/login-registration-mixins';
+import { CtaButton, LayoutWrapper, ShowOnMobile, ShowOnDesktop, PageHeader, PageHeaderBgImage } from '../../styles/mixins';
+import { LoginRegistrationPageLinks, ButtonWrapper } from '../../styles/login-registration-mixins';
 import city from '../../images/city.png';
 import playerBackground from '../../images/player-bg.png';
 import tgcClub from '../../images/tgc-club.png';
@@ -33,8 +33,8 @@ const LoginPage: React.FC = () => {
           <ShowOnMobile><Link to='/registration'><CtaButton>Join</CtaButton></Link></ShowOnMobile>
           <ShowOnDesktop><Link to='/registration'><CtaButton>Join TGC Club</CtaButton></Link></ShowOnDesktop>
         </ButtonWrapper>
-        <LoginRegistrationPageBgImage src={tgcClub} alt='tgc club background' />
-        <LoginRegistrationPageHeader>Log In</LoginRegistrationPageHeader>
+        <PageHeaderBgImage src={tgcClub} alt='tgc club background' />
+        <PageHeader>Log In</PageHeader>
         <LoginRegistrationPageLinks>Need an account? <Link to='/registration'>Sign up now</Link></LoginRegistrationPageLinks>
         <LoginForm />
       </RegistrationPageWrapper>

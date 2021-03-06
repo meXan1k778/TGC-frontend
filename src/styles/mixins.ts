@@ -76,6 +76,27 @@ export const HeadingH2 = styled.h2`
   text-align: center;
 `;
 
+export const PageHeader = styled(HeadingH1)`
+  margin: 81px 0 2px;
+  z-index: 1;
+  font-weight: normal;
+  
+  @media ${device.tablet} {
+    margin-top: 72px;  
+  }
+`;
+
+export const PageHeaderBgImage = styled.img`
+  width: 70%;
+  position: absolute;
+  top: 125px;
+
+  @media ${device.tablet} {
+    width: auto;
+    top: 136px;
+  }
+`;
+
 export const ShowOnDesktop = styled.div`
   display: none;
 

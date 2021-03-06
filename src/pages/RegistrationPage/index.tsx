@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import RegistrationForm from '../../components/RegistrationForm';
-import { CtaButton, LayoutWrapper } from '../../styles/mixins';
-import { LoginRegistrationPageHeader, LoginRegistrationPageBgImage, LoginRegistrationPageLinks, ButtonWrapper } from '../../styles/login-registration-mixins';
+import { CtaButton, LayoutWrapper, PageHeader, PageHeaderBgImage } from '../../styles/mixins';
+import { LoginRegistrationPageLinks, ButtonWrapper } from '../../styles/login-registration-mixins';
 import city from '../../images/city.png';
 import playerBackground from '../../images/player-bg.png';
 import tgcClub from '../../images/tgc-club.png';
@@ -32,8 +32,8 @@ const RegistrationPage: React.FC = () => {
         <ButtonWrapper>
           <Link to='/login'><CtaButton>Sign In</CtaButton></Link>
         </ButtonWrapper>
-        <LoginRegistrationPageBgImage src={tgcClub} alt='tgc club background' />
-        <LoginRegistrationPageHeader>Join TGC Club</LoginRegistrationPageHeader>
+        <PageHeaderBgImage src={tgcClub} alt='tgc club background' />
+        <PageHeader>Join TGC Club</PageHeader>
         <LoginRegistrationPageLinks>Have an account? <Link to='/login'>Sign in now</Link></LoginRegistrationPageLinks>
         <RegistrationForm />
       </RegistrationPageWrapper>
