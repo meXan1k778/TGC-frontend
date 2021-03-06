@@ -50,13 +50,6 @@ export const ButtonWithBorder = styled(CtaButton)`
   border-radius: 4px;
 `;
 
-
-export const LoginRegisterButton = styled(ButtonWithBorder)`
-  max-width: 306px;
-  margin: 0 auto;
-  width: 100%;
-`;
-
 export const Paragraph = styled.p`
   font-size: 14px;
   line-height: 17px;
