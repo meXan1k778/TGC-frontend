@@ -95,14 +95,14 @@ const CheckoutPayment: React.FC = () => {
         <CheckoutPaymentSum>$50</CheckoutPaymentSum>
         <PaymentLabel>Duos #21Y2: $25/person for 2 players</PaymentLabel>
         <CheckoutPaymentButtonWrapper>
-          <CheckoutPaymentButton paymentType="applePay"/>
-          <CheckoutPaymentButton paymentType="payPal"/>
+          <CheckoutPaymentButton paymentType='applePay'/>
+          <CheckoutPaymentButton paymentType='payPal'/>
         </CheckoutPaymentButtonWrapper>
         <CheckoutPaymentMethod>
-          <img src={mastercardLogo} alt="mastercard logo" />
-          <img src={visaLogo} alt="visa logo" />
-          <img src={discoverLogo} alt="discover logo" />
-          <img src={amexLogo} alt="amex logo" />
+          <img src={mastercardLogo} alt='mastercard logo' />
+          <img src={visaLogo} alt='visa logo' />
+          <img src={discoverLogo} alt='discover logo' />
+          <img src={amexLogo} alt='amex logo' />
         </CheckoutPaymentMethod>
     </StyledCheckoutPayment>
   );

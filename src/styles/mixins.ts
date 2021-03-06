@@ -106,7 +106,23 @@ export const ShowOnDesktop = styled.div`
 `;
 
 export const ShowOnMobile = styled.div`
+  display: block;
+  
   @media ${device.tablet} {
     display: none;
+  }
+`;
+
+export const UserContentWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  top: 25px;
+  right: 20px;
+
+  @media ${device.tablet} {
+    position: relative;
+    margin: 33px 0;
   }
 `;

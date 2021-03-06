@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PageHeader, LayoutWrapper, Paragraph, PageHeaderBgImage } from '../../styles/mixins';
+import { PageHeader, LayoutWrapper, Paragraph, PageHeaderBgImage, UserContentWrapper } from '../../styles/mixins';
 import city from '../../images/city.png';
 import playerBackground from '../../images/player-bg.png';
 import registration from '../../images/registration.png';
@@ -62,20 +62,6 @@ const PaymentPageText = styled(Paragraph)`
   text-align: center;
 `;
 
-const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  position: absolute;
-  top: 25px;
-  right: 20px;
-
-  @media ${device.tablet} {
-    position: relative;
-    margin: 33px 0;
-  }
-`;
-
 const UserAccount = styled.p`
   font-size: 16px;
   line-height: 19px;
@@ -111,9 +97,9 @@ const PaymentPage: React.FC = () => {
   return (
     <StyledPaymentPage>
       <PaymentPageWrapper removeMobilePaddings={true}>
-        <ContentWrapper>
+        <UserContentWrapper>
           <UserAccount>Francis Green</UserAccount>
-        </ContentWrapper>
+        </UserContentWrapper>
         <MenuList>
           <MenuItem>All Tournaments</MenuItem>
           <MenuItem>My Touraments</MenuItem>
