@@ -127,6 +127,22 @@ export const UserContentWrapper = styled.div`
   }
 `;
 
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 18px;
+  right: 20px;
+
+  @media ${device.tablet} {
+    position: relative;
+    margin-top: 22px;
+  }
+`;
+
 export const MenuList = styled.ul`
   display: none;
   list-style: none;
