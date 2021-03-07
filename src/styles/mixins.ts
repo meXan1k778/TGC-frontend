@@ -126,3 +126,21 @@ export const UserContentWrapper = styled.div`
     margin: 33px 0;
   }
 `;
+
+export const MenuList = styled.ul`
+  display: none;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+
+  @media ${device.tablet} {
+    display: flex;
+  }
+`;
+
+export const MenuItem = styled.li`
+  font-size: 16px;
+  line-height: 19px;
+  color: #fff;
+  margin-right: 50px;
+`;
