@@ -20,7 +20,7 @@ export const formRestrictions: any = {
         },
         errorMessage: {
             required: 'This field is required',
-            pattern: 'Invalid email, it should be like this format ahmed@domain.any',
+            pattern: 'Invalid email, it should be like this format anyone@domain.any',
         }
     },
     password: {
