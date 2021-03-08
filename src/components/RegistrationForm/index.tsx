@@ -155,7 +155,7 @@ const RegistrationForm: React.FC = () => {
         console.log(data);
         const dateOfBirth = `${birthMonth}-${birthDate}-${birthYear}`;
 
-        axios.post('/auth/register', {
+        axios.post('https://nxt9b4fibh.execute-api.us-east-1.amazonaws.com/dev/auth/register', {
             fullName,
             password,
             confirmPassword,
