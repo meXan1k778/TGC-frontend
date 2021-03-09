@@ -10,6 +10,7 @@ import { device } from '../../styles/constants';
 import { InputBlockError, Input, StyledInputBlock } from '../../styles/mixins';
 import SnackbarComponent from '../SnackBar';
 import { IRegistrationFormData } from './types';
+import { URL } from '../../utils/constants';
 
 const RegistrationFormWrapper = styled.form`
   display: flex;
@@ -64,7 +65,7 @@ const RegistrationForm: React.FC = () => {
         const { email, password, confirmPassword, country, fullName, birthDate, birthMonth, birthYear } = data;
         const dateOfBirth = `${birthMonth}-${birthDate}-${birthYear}`;
 
-        axios.post('/auth/register', {
+        axios.post(URL.SIGN_UP_URL, {
             fullName,
             password,
             confirmPassword,
@@ -78,7 +79,7 @@ const RegistrationForm: React.FC = () => {
             setTimeout(() => history.push('/tournament'), 3000);
         })
         .catch(function ({ response: { data } }) {
-            const { message } = JSON.parse(data);
+            const { message } = data;
             setSnackbarOpened(true);
             setIsError(true);
             setSnackbarText(message);

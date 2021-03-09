@@ -8,6 +8,7 @@ import SnackbarComponent from '../SnackBar';
 import { ILoginFormData } from './types';
 import { LoginRegisterButton } from '../../styles/login-registration-mixins';
 import { device } from '../../styles/constants';
+import { URL } from '../../utils/constants';
 
 const LoginFormWrapper = styled.form`
   display: flex;
@@ -57,7 +58,7 @@ const LoginForm: React.FC = () => {
     const onSubmit = (data: ILoginFormData) => {
         const { email, password  } = data;
 
-        axios.post('/auth/login', {
+        axios.post(URL.SIGN_IN_URL, {
             email,
             password
         })
@@ -67,7 +68,7 @@ const LoginForm: React.FC = () => {
             setTimeout(() => history.push('/tournament'), 3000);
         })
         .catch(function ({ response: { data } }) {
-            const { message } = JSON.parse(data);
+            const { message } = data;
             setSnackbarOpened(true);
             setIsError(true);
             setSnackbarText(message);
