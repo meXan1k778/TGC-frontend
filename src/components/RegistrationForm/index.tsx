@@ -64,6 +64,7 @@ const RegistrationForm: React.FC = () => {
     const onSubmit = (data: IRegistrationFormData) => {
         const { email, password, confirmPassword, country, fullName, birthDate, birthMonth, birthYear } = data;
         const dateOfBirth = `${birthMonth}-${birthDate}-${birthYear}`;
+        setSnackbarOpened(false);
 
         axios.post(URL.SIGN_UP_URL, {
             fullName,
@@ -74,6 +75,7 @@ const RegistrationForm: React.FC = () => {
             country
         })
         .then(function (response) {
+            setIsError(false);
             setSnackbarOpened(true);
             setSnackbarText('Successfully registered');
             setTimeout(() => history.push('/tournament'), 3000);
