@@ -96,5 +96,21 @@ export const formRestrictions: any = {
         errorMessage: {
             required: 'This field is required',
         }
+    },
+    platformId: {
+        restrictions: {
+            required: true,
+        },
+        errorMessage: {
+            required: 'This field is required',
+        }
+    },
+    platform: {
+        restrictions: {
+            required: true,
+        },
+        errorMessage: {
+            required: 'This field is required',
+        }
     }
 }

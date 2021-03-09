@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import InputBlock from '../InputBlock';
 import { Paragraph, ButtonWithBorder } from '../../styles/mixins';
+import { useForm } from 'react-hook-form';
 import { LoginRegisterButton } from '../../styles/login-registration-mixins';
 import circledCheckIcon from '../../images/circled-check.svg';
 import arrowIcon from '../../images/arrow.svg';
 import { device } from '../../styles/constants';
+import {ILoginFormData} from "../LoginForm/types";
 
 const PaymentSuccessFormWrapper = styled.form`
   display: flex;
@@ -63,18 +65,22 @@ const SelectArrow = styled.img`
 `;
 
 const PaymentSuccessForm: React.FC = () => {
+
+    const { register, handleSubmit, errors } = useForm();
+
+    const onSubmit = (data: ILoginFormData) => console.log(data);
   return (
-    <PaymentSuccessFormWrapper>
+    <PaymentSuccessFormWrapper onSubmit={handleSubmit(onSubmit)}>
       <SuccessMessageBlock>
         <img src={circledCheckIcon} alt='check icon' />
         <SuccessMessage>we recieved your payment</SuccessMessage>
       </SuccessMessageBlock>
       <Select>
         <SelectArrow src={arrowIcon} alt='arrow icon' />
-        <InputBlock name='platform' placeholder='Your Platform Type' />
+        <InputBlock name='platform' placeholder='Your Platform Type' register={register} errors={errors} />
       </Select>
-      <InputBlock name='platformId' placeholder='Your Platform ID' />
-      <InputBlock name='email' placeholder='Email of Player #2' type='email' />
+      <InputBlock name='platformId' placeholder='Your Platform ID' register={register} errors={errors} />
+      <InputBlock name='email' placeholder='Email of Player #2' type='email' register={register} errors={errors} />
       <LoginRegisterButton>Submit</LoginRegisterButton>
     </PaymentSuccessFormWrapper>
   );
