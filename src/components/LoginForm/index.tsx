@@ -57,12 +57,14 @@ const LoginForm: React.FC = () => {
 
     const onSubmit = (data: ILoginFormData) => {
         const { email, password  } = data;
+        setSnackbarOpened(false);
 
         axios.post(URL.SIGN_IN_URL, {
             email,
             password
         })
         .then(function (response) {
+            setIsError(false);
             setSnackbarOpened(true);
             setSnackbarText('Successfully logged in');
             setTimeout(() => history.push('/tournament'), 3000);

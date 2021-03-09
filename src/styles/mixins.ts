@@ -199,3 +199,14 @@ export const InputBlockError = styled(Paragraph)`
     text-align: center;
     font-family: inherit;
 `;
+
+export const Select = styled.div`
+  position: relative;
+`;
+
+export const SelectArrow = styled.img`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+`;
