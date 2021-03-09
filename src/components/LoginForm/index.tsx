@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import InputBlock from '../InputBlock';
 import SnackbarComponent from '../SnackBar';
@@ -41,6 +42,7 @@ const LoginForm: React.FC = () => {
     const [snackbarOpened, setSnackbarOpened] = useState(false);
     const [isError, setIsError] = useState(false);
     const [snackbarText, setSnackbarText] = useState('');
+    const history = useHistory();
 
     const handleCloseSnackbar = (event?: React.SyntheticEvent, reason?: string) => {
         if (reason === 'clickaway') {
@@ -62,6 +64,7 @@ const LoginForm: React.FC = () => {
         .then(function (response) {
             setSnackbarOpened(true);
             setSnackbarText('Successfully logged in');
+            setTimeout(() => history.push('/tournament'), 3000);
         })
         .catch(function ({ response: { data } }) {
             const { message } = JSON.parse(data);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IInputBlock } from './types';
 import { formRestrictions } from '../../utils/formRestrictions';
 import { InputBlockError, Input, StyledInputBlock } from '../../styles/mixins';

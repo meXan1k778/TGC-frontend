@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import InputBlock from '../InputBlock';
 import CheckboxBlock from '../CheckboxBlock';
 import { LoginRegisterButton } from '../../styles/login-registration-mixins';
@@ -49,6 +50,7 @@ const RegistrationForm: React.FC = () => {
     const [snackbarOpened, setSnackbarOpened] = useState(false);
     const [isError, setIsError] = useState(false);
     const [snackbarText, setSnackbarText] = useState('');
+    const history = useHistory();
 
     const handleCloseSnackbar = (event?: React.SyntheticEvent, reason?: string) => {
         if (reason === 'clickaway') {
@@ -73,6 +75,7 @@ const RegistrationForm: React.FC = () => {
         .then(function (response) {
             setSnackbarOpened(true);
             setSnackbarText('Successfully registered');
+            setTimeout(() => history.push('/tournament'), 3000);
         })
         .catch(function ({ response: { data } }) {
             const { message } = JSON.parse(data);
