@@ -9,9 +9,7 @@ import { device } from '../../styles/constants';
 import AuthHeader from '../../components/AuthHeader';
 import { getTournaments } from '../../services/getTournaments';
 import { getAuthToken } from '../../utils/helpers';
-import { URL } from '../../utils/constants';
-
-const tableHead: string[] = ['division', 'Tournament date', 'price', 'Teams', 'registration'];
+import { tableHead, URL } from '../../utils/constants';
 
 const StyledPaymentPage = styled.div`
   min-height: 1460px;

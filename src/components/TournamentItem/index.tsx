@@ -270,7 +270,7 @@ const TournamentItem = ({
       <TournamentCellTeamSize teamSize={maxNumberOfTeams}>{maxNumberOfTeams || '-'}</TournamentCellTeamSize>
       <TournamentCellStatus>
         <TournamentTimelineButton status='open' showIcons={false}>
-            <Link to={{pathname: '/payment', state: { tournamentId: id }}}>Registration</Link>
+            <Link to={{pathname: '/payment', state: { tournamentId: id }}}>Register</Link>
             </TournamentTimelineButton>
         <TournamentTimeline>Starts in {startsIn} days</TournamentTimeline>
       </TournamentCellStatus>

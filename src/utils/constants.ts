@@ -9,3 +9,5 @@ export const URL = {
     GET_ALL_TOURNAMENTS: `${process.env.REACT_APP_BASE_URL}/payment/tournaments`,
     GET_MY_TOURNAMENTS: `${process.env.REACT_APP_BASE_URL}/users/tournaments`,
 }
+
+export const tableHead: string[] = ['division', 'Tournament date', 'price', 'Teams', 'registration'];
