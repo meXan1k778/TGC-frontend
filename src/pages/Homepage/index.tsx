@@ -27,7 +27,8 @@ const Homepage: React.FC = () => {
       text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sem lacinia commodo ac egestas dapibus neque. Orci pulvinar mauris viverra auctor egestas cras amet. '
      />
      <TournamentTableWrapper>
-        <TournamentTable data={mockedTableData} title="Tournament List" />
+         {/*TODO: return this after fetching a real data*/}
+        {/*<TournamentTable data={mockedTableData} title="Tournament List" />*/}
      </TournamentTableWrapper>
      <Description />
      <PlayersCarousel />
