@@ -77,7 +77,12 @@ const LoginForm: React.FC = () => {
             getUserService(token)
                 .then(function ({ data: { body: { user } } }) {
                     auth.setUser(user);
-                    setTimeout(() => history.push('/tournament'), 3000);
+
+                    if(auth.tournamentId) {
+                      setTimeout(() => history.push('/payment'), 3000);
+                    } else {
+                      setTimeout(() => history.push('/tournament'), 3000);
+                    }
                 })
                 .catch(function (err) {
                     console.log(err);

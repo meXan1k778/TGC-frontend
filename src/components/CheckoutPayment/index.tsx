@@ -13,6 +13,7 @@ import PayPalButton from '../PaypalButton';
 import { setPaypalProvide } from '../../services/paypalService';
 import Spinner from '../Spinner';
 import { getAuthToken } from '../../utils/helpers';
+import { useAuth } from '../../hooks/useAuth';
 
 const StyledCheckoutPayment = styled.div`
   width: 100%;
@@ -120,7 +121,8 @@ const CheckoutPayment: React.FC = () => {
     const [mode, setMode] = useState('');
     const [showSpinner, setShowSpinner] = useState(true);
     const [showPaypal, setShowPaypal] = useState(false);
-    const { state: { tournamentId } } = useLocation<ILocationState>();
+    const location = useLocation<ILocationState>();
+    const { tournamentId } = useAuth();
 
     useEffect( () => {
         const token = getAuthToken();

@@ -19,13 +19,14 @@ const TournamentTableWrapper = styled.div`
 const Homepage: React.FC = () => {
     const [allTournaments, setAllTournaments] = useState([]);
 
-    useEffect(() =>{
-        getTournaments(URL.GET_ALL_TOURNAMENTS, '')
-            .then(({ data: { body: { tournaments } } }) => {
-                setAllTournaments(tournaments);
-            })
-            .catch(err => console.log(err));
-        }, []);
+    useEffect(() => {
+      getTournaments(URL.GET_ALL_TOURNAMENTS, '')
+          .then(({ data: { body: { tournaments } } }) => {
+              setAllTournaments(tournaments);
+          })
+          .catch(err => console.log(err));
+    }, []);
+
   return (
     <main>
      <MainBanner />
