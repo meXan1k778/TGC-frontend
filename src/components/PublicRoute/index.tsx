@@ -6,7 +6,7 @@ import {
 import { useAuth } from '../../hooks/useAuth';
 
 const PublicRoute = ({ children, ...rest }: any) => {
-    const { userToken  }: any = useAuth();
+    const { userToken, tournamentId }: any = useAuth();
 
     return (
         <Route
@@ -17,7 +17,7 @@ const PublicRoute = ({ children, ...rest }: any) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: '/tournament',
+                            pathname: tournamentId ? '/payment' : '/tournament',
                             state: { from: location }
                         }}
                     />

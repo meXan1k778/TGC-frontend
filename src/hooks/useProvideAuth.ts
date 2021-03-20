@@ -23,23 +23,15 @@ export function useProvideAuth() {
         setUserToken(null);
     };
 
+    // TODO: fetch real id
+    const tournamentId = 1;
+
     return {
         userData,
         userToken,
+        tournamentId,
         setUser,
         signin,
         signout
     };
 }
-
-// const fakeAuth = {
-//     isAuthenticated: false,
-//     signin(cb: any) {
-//         fakeAuth.isAuthenticated = true;
-//         setTimeout(cb, 100); // fake async
-//     },
-//     signout(cb: any) {
-//         fakeAuth.isAuthenticated = false;
-//         setTimeout(cb, 100);
-//     }
-// };

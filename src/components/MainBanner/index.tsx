@@ -113,7 +113,8 @@ const MainBanner: React.FC = () => {
             <TournamentImage src={tournaments} alt='tournaments' />
             <Announcement>Next Tournaments</Announcement>
             <AnnouncementDate>February 3, 2021</AnnouncementDate>
-              <Link to='/tournament'><LoginRegisterButton>Register Now</LoginRegisterButton></Link>
+            {/* TODO: add real id in homepage integration task */}
+              <Link to={{ pathname: '/payment', state: { tournamentId: '1', from: window.location.pathname } }} ><LoginRegisterButton>Register Now</LoginRegisterButton></Link>
             <ViewAllEvents>View all events</ViewAllEvents>
           </BannerTextWrapper>
       </MainBannerWrapper>
