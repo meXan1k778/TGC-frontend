@@ -31,12 +31,12 @@ const Homepage: React.FC = () => {
     <main>
      <MainBanner />
      <RecentWinners />
-     <FeaturesBanner textRight banner={banner1} title='Top 4 Games'
+     {/* <FeaturesBanner textRight banner={banner1} title='Top 4 Games'
       text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sem lacinia commodo ac egestas dapibus neque. Orci pulvinar mauris viverra auctor egestas cras amet. '
      />
      <FeaturesBanner banner={banner2} title='Payment in 24h'
       text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio sem lacinia commodo ac egestas dapibus neque. Orci pulvinar mauris viverra auctor egestas cras amet. '
-     />
+     /> */}
      <TournamentTableWrapper>
          {/*TODO: return this after fetching a real data*/}
         <TournamentTable data={allTournaments} tableHead={tableHead} title='Tournament List' />
