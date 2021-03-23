@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+
 import InputBlock from '../InputBlock';
 import { Paragraph } from '../../styles/mixins';
-import { useForm } from 'react-hook-form';
 import { LoginRegisterButton } from '../../styles/login-registration-mixins';
 import circledCheckIcon from '../../images/circled-check.svg';
 import arrowIcon from '../../images/arrow.svg';
 import { device } from '../../styles/constants';
-import { ILoginFormData } from '../LoginForm/types';
+import { IPaymentSuccessFormData } from './types';
 import { Select, SelectArrow } from '../../styles/mixins';
 
 const PaymentSuccessFormWrapper = styled.form`
@@ -55,10 +56,9 @@ const SuccessMessage = styled(Paragraph)`
 `;
 
 const PaymentSuccessForm: React.FC = () => {
-
-    const { register, handleSubmit, errors } = useForm();
-
-    const onSubmit = (data: ILoginFormData) => console.log(data);
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data: IPaymentSuccessFormData) => console.log(data); 
+ 
   return (
     <PaymentSuccessFormWrapper onSubmit={handleSubmit(onSubmit)}>
       <SuccessMessageBlock>
@@ -67,11 +67,33 @@ const PaymentSuccessForm: React.FC = () => {
       </SuccessMessageBlock>
       <Select>
         <SelectArrow src={arrowIcon} alt='arrow icon' />
-        <InputBlock name='platform' placeholder='Your Platform Type' register={register} errors={errors} />
+        <InputBlock 
+          name='platform' 
+          placeholder='Your Platform Type' 
+          register={register} 
+          errors={errors} 
+        />
       </Select>
-      <InputBlock name='platformId' placeholder='Your Platform ID' register={register} errors={errors} />
-      <InputBlock name='email' placeholder='Email of Player #2' type='email' register={register} errors={errors} />
-      <LoginRegisterButton>Submit</LoginRegisterButton>
+      <InputBlock   
+        name='platformId' 
+        placeholder='Your Platform ID' 
+        register={register} 
+        errors={errors} 
+      />
+      <InputBlock 
+        name='email' 
+        placeholder='Email of Player #2' 
+        type='email' 
+        register={register} 
+        errors={errors} 
+      />
+      <InputBlock 
+        name='teamName' 
+        placeholder='Your Team Name' 
+        register={register} 
+        errors={errors} 
+      />
+      <LoginRegisterButton onClick={() => handleSubmit(onSubmit)}>Submit</LoginRegisterButton>
     </PaymentSuccessFormWrapper>
   );
 }

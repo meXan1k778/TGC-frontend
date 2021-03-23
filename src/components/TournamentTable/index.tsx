@@ -89,7 +89,11 @@ const MainBannerWrapper = styled(LayoutWrapper)`
 `;
 
 const TournamentTable = ({
-    data, title, styledHeader = false, hasFooter = false, footerButton,
+    data, 
+    title, 
+    styledHeader = false, 
+    hasFooter = false, 
+    footerButton,
     tableHead
 }: ITournamentTable) => {
   return (
