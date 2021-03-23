@@ -10,6 +10,7 @@ import {
     CtaButton,
     ShowOnDesktop,
 } from '../../styles/mixins';
+import { CustomDropdown } from '../CustomDropdown';
 
 
 const JoinTCGButton = styled(CtaButton)`
@@ -22,11 +23,22 @@ function AuthHeader() {
 
     return userToken?.accessToken ? (
         <>
-            <UserContentWrapper>
-                <UserAccount>{fullName}</UserAccount>
+            <UserContentWrapper> 
+                <CustomDropdown toggler={() => (
+                    <UserAccount>{fullName}</UserAccount>
+                )}>
+                    <CustomDropdown.Item onClick={() => {}}>
+                        Edit profile
+                    </CustomDropdown.Item>
+                    <CustomDropdown.Item onClick={signout}>
+                        Logg out
+                    </CustomDropdown.Item>
+                </CustomDropdown> 
+
+                {/* <UserAccount>{fullName}</UserAccount>
                 <SimpleButton onClick={signout}>
                     Sign out
-                </SimpleButton>
+                </SimpleButton> */}
             </UserContentWrapper>
         </>
     ) : (
