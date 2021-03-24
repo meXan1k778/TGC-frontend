@@ -11,4 +11,12 @@ export const URL = {
     INVITE_TEAMMATE: `${process.env.REACT_APP_BASE_URL}/users/invite-teammate`
 }
 
-export const tableHead: string[] = ['division', 'Tournament date', 'price', 'Teams', 'registration'];
+export const tableHead: string[] = [
+    'division', 
+    'Tournament date', 
+    'price', 
+    'Teams', 
+    'game', 
+    'game mode',
+    'registration',
+];
