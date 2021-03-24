@@ -45,6 +45,16 @@ export const formRestrictions: any = {
             minLength: 'Country name length must be at least 2 characters long',
         }
     },
+    state: {
+        restrictions: {
+            minLength: 2,
+            required: true,
+        },
+        errorMessage: {
+            required: 'This field is required',
+            minLength: 'State name length must be at least 2 characters long',
+        }
+    },
     birthDate: {
         restrictions: {
             required: true,

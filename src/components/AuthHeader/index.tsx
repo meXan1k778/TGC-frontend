@@ -34,11 +34,6 @@ function AuthHeader() {
                         Logg out
                     </CustomDropdown.Item>
                 </CustomDropdown> 
-
-                {/* <UserAccount>{fullName}</UserAccount>
-                <SimpleButton onClick={signout}>
-                    Sign out
-                </SimpleButton> */}
             </UserContentWrapper>
         </>
     ) : (

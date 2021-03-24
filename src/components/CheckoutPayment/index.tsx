@@ -27,7 +27,7 @@ const StyledCheckoutPayment = styled.div`
     width: 675px;
     padding-bottom: 40px;
   }
-`;
+`; 
 
 const CheckoutPaymentTitle = styled(HeadingH2)`
   text-align: center;
@@ -126,7 +126,7 @@ const CheckoutPayment: React.FC = () => {
 
     useEffect( () => {
         const token = getAuthToken();
-        setPaypalProvide(token)
+        setPaypalProvide(token) 
             .then(function ({ data: { body: { paypal } } }) {
                 const { clientId, currency, mode } = paypal;
                 setClientId(clientId);
@@ -135,7 +135,7 @@ const CheckoutPayment: React.FC = () => {
                 setShowPaypal(true);
             })
             .catch((err) => console.log(err));
-    }, []);
+    }, []); 
 
     const afterScriptLoad = (isLoaded: boolean) => setShowSpinner(!isLoaded);
 
@@ -147,10 +147,14 @@ const CheckoutPayment: React.FC = () => {
         <CheckoutPaymentButtonWrapper>
             {showSpinner && <SpinnerWrapper><Spinner /></SpinnerWrapper>}
             {/* <CheckoutPaymentButton paymentType='applePay'/> */}
-            {showPaypal &&
-                <PayPalButton tournamentId={tournamentId} clientId={clientId}
-                              currencyCode={currency} mode={mode} callback={afterScriptLoad} />
-            }
+            {showPaypal && <PayPalButton 
+                tournamentId={tournamentId} 
+                clientId={clientId}
+                currencyCode={currency} 
+                mode={mode} 
+                callback={afterScriptLoad} 
+              />
+            } 
         </CheckoutPaymentButtonWrapper>
         {/* <CheckoutPaymentMethod>
           <img src={mastercardLogo} alt='mastercard logo' />

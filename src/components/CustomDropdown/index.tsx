@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { useOutsideClick } from '../../hooks/useOutsideClick';
 
 import {
     DropdownContainer,
@@ -16,9 +17,18 @@ interface CustomDropdownProps {
 
 export const CustomDropdown = ({toggler, children}: CustomDropdownProps) => {
     const [open, setOpen] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (ref.current && !ref.current.contains(event.target as Node)) {
+            setOpen(false);
+        }
+    };
+
+    useOutsideClick(handleClickOutside);
 
     return (
-        <DropdownContainer>
+        <DropdownContainer ref={ref}>
             <DropdownTitle 
                 onClick={() => setOpen(!open)}
             >

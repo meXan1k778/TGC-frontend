@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
     LayoutWrapper,
     SimpleButton,
@@ -111,6 +111,7 @@ interface MainBannerProps {
 
 const MainBanner: React.FC<MainBannerProps> = ({ onViewAllEventsClick }) => {
   let { userData } = useAuth();
+  const history = useHistory();
 
   return (
     <StyledMainBanner>
@@ -119,7 +120,7 @@ const MainBanner: React.FC<MainBannerProps> = ({ onViewAllEventsClick }) => {
             {
               userData &&
               <MenuList>
-                <MenuItem>All Tournaments</MenuItem>
+                <MenuItem onClick={() => history.push('/tournament')}>All Tournaments</MenuItem>
                 <MenuItem>My Tournaments</MenuItem>
               </MenuList>
             }
