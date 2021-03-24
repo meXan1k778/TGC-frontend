@@ -150,9 +150,6 @@ const RegistrationForm: React.FC = () => {
             <CustomSelect.Item onClick={() => setValue('country', 'USA')}>
               USA
             </CustomSelect.Item>
-            <CustomSelect.Item onClick={() => setValue('country', 'Sweden')}>
-              Sweden
-            </CustomSelect.Item>
           </CustomSelect>
           
           <CustomSelect toggler={() => (

@@ -17,8 +17,8 @@ const PublicRoute = ({ children, ...rest }: any) => {
                 ) : (
                     <Redirect
                         to={{
-                            // pathname: tournamentId ? '/payment' : '/tournament',
-                            pathname: '/tournament',
+                            pathname: tournamentId ? '/payment' : '/tournament',
+                            //pathname: '/tournament',
                             state: { from: location }
                         }}
                     />
