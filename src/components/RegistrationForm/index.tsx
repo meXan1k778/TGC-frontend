@@ -11,8 +11,9 @@ import { device } from '../../styles/constants';
 import { InputBlockError, Input, StyledInputBlock, Select, SelectArrow } from '../../styles/mixins';
 import SnackbarComponent from '../SnackBar';
 import { IRegistrationFormData } from './types';
-import { URL } from '../../utils/constants';  
+import { URL, usaStates } from '../../utils/constants';  
 import arrowIcon from '../../images/arrow.svg';
+import { CustomSelect } from '../CustomSelect';
 
 
 const RegistrationFormWrapper = styled.form`
@@ -133,7 +134,52 @@ const RegistrationForm: React.FC = () => {
               {errors.confirmPassword && <InputBlockError>{errors.confirmPassword.message}</InputBlockError>}
               {errors.confirmPassword?.type === 'required' && <InputBlockError>This field is required</InputBlockError>}
           </StyledInputBlock>
-          <Select>
+
+          <CustomSelect toggler={() => (
+             <Select>
+                <SelectArrow src={arrowIcon} alt='arrow icon' />
+                <InputBlock  
+                  name='country' 
+                  placeholder='Country' 
+                  register={register} 
+                  errors={errors} 
+                  readOonly
+                />
+              </Select>
+          )}>
+            <CustomSelect.Item onClick={() => setValue('country', 'USA')}>
+              USA
+            </CustomSelect.Item>
+            <CustomSelect.Item onClick={() => setValue('country', 'Sweden')}>
+              Sweden
+            </CustomSelect.Item>
+          </CustomSelect>
+          
+          <CustomSelect toggler={() => (
+            <Select>
+                  <SelectArrow src={arrowIcon} alt='arrow icon' />
+                  <InputBlock 
+                    name='state' 
+                    placeholder='State' 
+                    register={register} 
+                    errors={errors} 
+                    readOonly
+                  />
+             </Select>
+          )}>
+            {
+              usaStates.map((state, i) => (
+                <CustomSelect.Item 
+                  key={`state-item-${i}`} 
+                  onClick={() => setValue('state', state)}
+                >
+                  {state}
+                </CustomSelect.Item>
+              ))
+            }
+          </CustomSelect>
+
+          {/* <Select>
             <SelectArrow src={arrowIcon} alt='arrow icon' />
             <InputBlock 
               name='country' 
@@ -141,8 +187,8 @@ const RegistrationForm: React.FC = () => {
               register={register} 
               errors={errors} 
             />
-          </Select>
-          <Select>
+          </Select> */}
+          {/* <Select>
             <SelectArrow src={arrowIcon} alt='arrow icon' />
             <InputBlock 
               name='state' 
@@ -150,7 +196,7 @@ const RegistrationForm: React.FC = () => {
               register={register} 
               errors={errors} 
             />
-          </Select>
+          </Select> */}
           <DateOfBirthBlock>
             <InputBlock placeholder='Birth Date' name='birthDate' register={register} errors={errors} />
             <InputBlock placeholder='Birth Month' name='birthMonth' register={register} errors={errors} />
