@@ -206,6 +206,10 @@ export const Input = styled.input`
     ::placeholder {
         color: #fff;
     }
+
+    :focus {
+      border-bottom: 1px solid #ff0f20
+    }
 `;
 
 export const InputBlockError = styled(Paragraph)`

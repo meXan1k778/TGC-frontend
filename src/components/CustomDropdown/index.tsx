@@ -27,6 +27,17 @@ export const CustomDropdown = ({toggler, children}: CustomDropdownProps) => {
 
     useOutsideClick(handleClickOutside);
 
+    const renderChildren: () => React.ReactNode = () => {
+        return React.Children.map(children, (child) => {
+            return React.cloneElement(child, { 
+               onClick: () => {
+                   child.props.onClick();
+                   setOpen(false);
+               } 
+            });
+        });
+    };
+
     return (
         <DropdownContainer ref={ref}>
             <DropdownTitle 
@@ -37,7 +48,7 @@ export const CustomDropdown = ({toggler, children}: CustomDropdownProps) => {
 
             {open &&
                 <DropdownMenu>
-                    {children}
+                    {renderChildren()}
                 </DropdownMenu>
             }
         </DropdownContainer>

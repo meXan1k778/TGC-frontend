@@ -29,16 +29,16 @@ export const CustomSelect = ({toggler, children}: CustomSelectProps) => {
 
     useOutsideClick(handleClickOutside);
 
-    // const renderChildren: React.ReactNode = () => {
-    //     return React.Children.map(children, (child) => {
-    //         return React.cloneElement(child, { 
-    //             onClick: () => {
-    //                 child.props.onClick(),
-    //                 setOpen(false),
-    //             }
-    //         });
-    //     });
-    // }
+    const renderChildren: () => React.ReactNode = () => {
+        return React.Children.map(children, (child) => {
+            return React.cloneElement(child, { 
+               onClick: () => {
+                   child.props.onClick();
+                   setOpen(false);
+               } 
+            });
+        });
+    };
 
     return (
         <SelectContainer ref={ref}>
@@ -48,7 +48,7 @@ export const CustomSelect = ({toggler, children}: CustomSelectProps) => {
 
             {open &&
                 <SelectMenu>
-                    {children}
+                    {renderChildren()}
                 </SelectMenu>
             }
         </SelectContainer>
