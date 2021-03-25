@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import InputBlock from '../InputBlock';
-import { Paragraph } from '../../styles/mixins';
+import { Paragraph, SimpleButton } from '../../styles/mixins';
 import { LoginRegisterButton } from '../../styles/login-registration-mixins';
 import circledCheckIcon from '../../images/circled-check.svg';
 import arrowIcon from '../../images/arrow.svg';
 import { device } from '../../styles/constants';
-import { IPaymentSuccessFormData } from './types';
+import { IIviteTeamMate, IPaymentSuccessFormData } from './types';
 import { Select, SelectArrow } from '../../styles/mixins';
 import { useAuth } from '../../hooks/useAuth';
 import { inviteTeammates } from '../../services/inviteTeammates';
+import { getAuthToken } from '../../utils/helpers';
 
 const PaymentSuccessFormWrapper = styled.form`
   display: flex;
@@ -56,10 +58,28 @@ const SuccessMessage = styled(Paragraph)`
   line-height: 24px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
- 
+
+const InviteTeammateBlock = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
+
+const InviteTeammateInputBlock = styled.div`
+  flex: 1;
+`;
+
+const InviteTeammateButton = styled(SimpleButton)`
+    margin-top: 0 !important;
+    margin-left: 10px;
+`;
+
+
 const PaymentSuccessForm: React.FC = () => {
-  const { register, handleSubmit, errors, setValue } = useForm();
+  const { register, handleSubmit, errors, setValue, getValues } = useForm();
   const { userData } = useAuth();
+  const [usersToInvite, setUsersToInvite] = useState<string[]>([]);
+  const location = useLocation<any>();
+  const history = useHistory();
 
 
   useEffect(() => {
@@ -71,20 +91,43 @@ const PaymentSuccessForm: React.FC = () => {
 
 
   const onSubmit = async (data: IPaymentSuccessFormData) => {
-    //TODO: 
+    const token = getAuthToken();
+    
+    const params: IIviteTeamMate = {
+      creationToken: location.state, 
+      receivers: usersToInvite, 
+      teamName: data.teamName,
+      platformId: data.platformId, 
+      platformType: data.platform,
+      token: token
+    };
+
+    if(usersToInvite.length === 0) {
+      delete params.receivers;
+    }
+
     try {
-      const res = await inviteTeammates({
-        creationToken: '', 
-        receivers: [data.email], 
-        teamName: data.teamName,
-        platformId: data.platformId, 
-        platformType: data.platform,
-        token: ''
-      })
+      const res = await inviteTeammates(params);
+      console.log('res.data', res.data)
+      if(res.data.statusCode === 201) {
+        history.push('/tournament')
+      }
     } catch (err) {
       console.log(err)
     }
   }; 
+
+  const handleAddTeammate = () => {
+    const value = getValues('teammate');
+    if(value.length > 3) {
+      setUsersToInvite(state => [...state, value]);
+      setValue('teammate', '')
+    }
+  };
+
+  const handleRemoveTeammate = (emailToRemove: string) => {
+    setUsersToInvite(state => state.filter(em => em !== emailToRemove))
+  };
 
  
   return (
@@ -108,13 +151,53 @@ const PaymentSuccessForm: React.FC = () => {
         register={register} 
         errors={errors} 
       />
-      <InputBlock 
-        name='email' 
-        placeholder='Email of Player #2' 
-        type='email' 
-        register={register} 
-        errors={errors} 
-      />
+
+      {
+        usersToInvite.length > 0 &&
+        usersToInvite.map((email, i) => (
+          <InviteTeammateBlock key={`user-email-${i}`}>
+            <InviteTeammateInputBlock>
+              <InputBlock 
+                name={`addedTeammate`} 
+                type='text' 
+                register={register} 
+                errors={errors} 
+                value={email}
+                readOnly
+              />
+            </InviteTeammateInputBlock>
+            <InviteTeammateButton 
+              type={'button'}
+              onClick={() => handleRemoveTeammate(email)}
+            >
+              Remove
+            </InviteTeammateButton>
+          </InviteTeammateBlock>
+        ))
+      }
+
+
+      {
+        usersToInvite.length < 3 &&
+        <InviteTeammateBlock>
+          <InviteTeammateInputBlock>
+            <InputBlock 
+              name='teammate' 
+              placeholder={`Email of Player #${usersToInvite.length + 2}`} 
+              type='email' 
+              register={register} 
+              errors={errors} 
+            />
+          </InviteTeammateInputBlock>
+          <InviteTeammateButton 
+            type={'button'}
+            onClick={handleAddTeammate}
+          >
+            Add
+          </InviteTeammateButton>
+        </InviteTeammateBlock>
+      }
+      
       <InputBlock 
         name='teamName' 
         placeholder='Your Team Name' 

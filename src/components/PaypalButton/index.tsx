@@ -55,7 +55,7 @@ export default function PayPalButton({ tournamentId, clientId, currencyCode, mod
         } catch (err) {
             console.log(err, 'create order');
         }
-    };
+    }; 
 
     const onApprove = async (data: any) => {
         //execute payment order
@@ -63,8 +63,9 @@ export default function PayPalButton({ tournamentId, clientId, currencyCode, mod
 
         try {
             const token = getAuthToken();
-            await executeOrder({ tournamentId, paymentId, payerId, token });
-            history.push('/payment-success');
+            const {data}: any = await executeOrder({ tournamentId, paymentId, payerId, token });
+            const { creationToken } = data.body;
+            history.push('/payment-success', creationToken);
         } catch(err) {
             console.log(err, 'create order');
         }
