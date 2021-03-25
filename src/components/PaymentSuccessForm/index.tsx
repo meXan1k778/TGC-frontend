@@ -14,6 +14,7 @@ import { Select, SelectArrow } from '../../styles/mixins';
 import { useAuth } from '../../hooks/useAuth';
 import { inviteTeammates } from '../../services/inviteTeammates';
 import { getAuthToken } from '../../utils/helpers';
+import SnackbarComponent from '../SnackBar';
 
 const PaymentSuccessFormWrapper = styled.form`
   display: flex;
@@ -23,6 +24,7 @@ const PaymentSuccessFormWrapper = styled.form`
   padding: 30px 20px 49px;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 20px;
 
   @media ${device.tablet} {
     width: 650px;
@@ -75,11 +77,23 @@ const InviteTeammateButton = styled(SimpleButton)`
 
 
 const PaymentSuccessForm: React.FC = () => {
+  const [snackbarOpened, setSnackbarOpened] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [snackbarText, setSnackbarText] = useState('');
+
   const { register, handleSubmit, errors, setValue, getValues } = useForm();
   const { userData } = useAuth();
   const [usersToInvite, setUsersToInvite] = useState<string[]>([]);
   const location = useLocation<any>();
   const history = useHistory();
+
+  const handleCloseSnackbar = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+        return;
+    }
+
+    setSnackbarOpened(false);
+  };
 
 
   useEffect(() => {
@@ -92,6 +106,7 @@ const PaymentSuccessForm: React.FC = () => {
 
   const onSubmit = async (data: IPaymentSuccessFormData) => {
     const token = getAuthToken();
+    setSnackbarOpened(false);
     
     const params: IIviteTeamMate = {
       creationToken: location.state, 
@@ -107,13 +122,20 @@ const PaymentSuccessForm: React.FC = () => {
     }
 
     try {
-      const res = await inviteTeammates(params);
-      console.log('res.data', res.data)
-      if(res.data.statusCode === 201) {
-        history.push('/tournament')
-      }
-    } catch (err) {
+      const response = await inviteTeammates(params);
+      setIsError(false);
+      setSnackbarOpened(true);
+      setSnackbarText(response.data.body.message);
+
+      if(response.data.statusCode === 201) {
+        setTimeout(() => history.push('/tournament'), 3000);
+      } 
+
+    } catch (err: any) {
       console.log(err)
+      setSnackbarOpened(true);
+      setIsError(true);
+      setSnackbarText(err?.response?.data?.body?.message);
     }
   }; 
 
@@ -129,9 +151,15 @@ const PaymentSuccessForm: React.FC = () => {
     setUsersToInvite(state => state.filter(em => em !== emailToRemove))
   };
 
- 
+  
   return (
     <PaymentSuccessFormWrapper onSubmit={handleSubmit(onSubmit)}>
+      <SnackbarComponent 
+        open={snackbarOpened} 
+        text={snackbarText} 
+        error={isError} 
+        handleClose={handleCloseSnackbar}
+      />
       <SuccessMessageBlock>
         <img src={circledCheckIcon} alt='check icon' />
         <SuccessMessage>we recieved your payment</SuccessMessage>
