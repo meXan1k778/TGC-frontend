@@ -42,9 +42,10 @@ const PaymentSuccessFormWrapper = styled.form`
     }
   }
   
-  button {
-    margin-top: 73px;
-  }
+`;
+
+const InviteButton = styled(LoginRegisterButton)`
+  margin-top: 73px;
 `;
 
 const SuccessMessageBlock = styled.div`
@@ -71,8 +72,7 @@ const InviteTeammateInputBlock = styled.div`
 `;
 
 const InviteTeammateButton = styled(SimpleButton)`
-    margin-top: 0 !important;
-    margin-left: 10px;
+  margin-left: 10px;
 `;
 
 
@@ -232,7 +232,7 @@ const PaymentSuccessForm: React.FC = () => {
         register={register} 
         errors={errors} 
       />
-      <LoginRegisterButton onClick={() => handleSubmit(onSubmit)}>Submit</LoginRegisterButton>
+      <InviteButton onClick={() => handleSubmit(onSubmit)}>Submit</InviteButton>
     </PaymentSuccessFormWrapper>
   );
 }

@@ -95,7 +95,7 @@ const TournamentTable = ({
     hasFooter = false, 
     footerButton,
     tableHead
-}: ITournamentTable) => {
+}: ITournamentTable) => { 
   return (
       <MainBannerWrapper removeMobilePaddings={true}>
         {title && <TournamentTableTitle>{title}</TournamentTableTitle>}
