@@ -254,13 +254,9 @@ const TournamentItem = ({
     const startsIn = getDays('', startAt);
     const { saveTournament } = useAuth();
 
-    // const saveTournamentId = () => {
-    //   saveTournament(id);
-    // }
 
     const handleRegister = () => {
       saveTournament(id);
-      console.log('Clicked')
       history.push({pathname: '/payment', state: { tournamentId: id }});
     }
 
@@ -308,7 +304,7 @@ const TournamentItem = ({
           Call of Duty: Warzone
         </TournamentCellPrize>
         <TournamentCellPrize>
-          Singles, Duos, Trios, Quads
+          Singles
         </TournamentCellPrize>
 
         <TournamentCellStatus>
@@ -318,12 +314,7 @@ const TournamentItem = ({
             disabled={disableRegister()}
             onClick={handleRegister}
           >
-              {/* <Link 
-                to={{pathname: '/payment', state: { tournamentId: id }}} 
-                onClick={saveTournamentId}
-              > */}
-                Register
-              {/* </Link> */}
+            Register
           </TournamentTimelineButton>
           <TournamentTimeline>Starts in {startsIn} days</TournamentTimeline>
         </TournamentCellStatus>
