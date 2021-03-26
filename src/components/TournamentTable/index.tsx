@@ -37,33 +37,34 @@ const TournamentTableHeadItem = styled.div`
   font-size: 12px;
   line-height: 14px;
 
-  // &:first-child {
-  //   flex-basis: 15%;
-  // }
+  &:first-child {
+    flex-basis: 15%;
+  }
 
-  // &:nth-child(2) {
-  //   flex-basis: 35%;
-  // }
+  &:nth-child(2) {
+    flex-basis: 25%;
+  }
 
-  // &:nth-child(3) {
-  //   flex-basis: 11%;
-  // }
+  &:nth-child(3) {
+    flex-basis: 10%;
+  }
 
-  // &:nth-child(4) {
-  //   flex-basis: 12%;
-  // }
+  &:nth-child(4) {
+    flex-basis: 10%;
+  }
 
-  // &:nth-child(5) {
-  //   flex-basis: 12%;
-  // }
+  &:nth-child(5) {
+    flex-basis: 10%;
+  }
 
-  // &:nth-child(6) {
-  //   flex-basis: 12%;
-  // }
+  &:nth-child(6) {
+    flex-basis: 10%;
+  }
 
-  // &:last-child {
-  //   flex-basis: 27%;
-  // }
+  &:last-child {
+    flex-basis: 20%;
+    text-align: center;
+  }
 `;
 
 const TournamentTableFooter = styled.div`
@@ -94,7 +95,7 @@ const TournamentTableTitle = styled(HeadingH2)`
 `;
 
 const MainBannerWrapper = styled(LayoutWrapper)`
-  flex-direction: column;
+  flex-direction: column; 
 `;
  
 const TournamentTable = ({

@@ -9,7 +9,7 @@ import australiaFlag from '../../images/australia-flag-square.svg';
 import trophyFlag from '../../images/trophy-transparent.svg';
 import rectangular from '../../images/rectangular.svg';
 import { device } from '../../styles/constants';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { toPounds } from '../../utils/helpers';
 
@@ -94,7 +94,7 @@ const TournamentCellStatus = styled(TournamentCell)`
   align-items: center;
 
   @media ${device.tablet} {
-    flex-direction: row;
+    flex-direction: column;
     flex-basis: 27%;
   }
 `;
@@ -207,7 +207,7 @@ const TournamentTimeline = styled.span`
   font-weight: 600;
   font-size: 10px;
   line-height: 12px;
-  margin-left: 11px;
+  margin-top: 5px;
   font-family: 'San Francisco', Arial, sans-serif;
 `;
 
@@ -250,12 +250,29 @@ const TournamentItem = ({
     startAt,
     updatedAt,
 }: ITournament) => {
+    const history = useHistory();
     const startsIn = getDays('', startAt);
     const { saveTournament } = useAuth();
 
-    const saveTournamentId = () => {
+    // const saveTournamentId = () => {
+    //   saveTournament(id);
+    // }
+
+    const handleRegister = () => {
       saveTournament(id);
+      console.log('Clicked')
+      history.push({pathname: '/payment', state: { tournamentId: id }});
     }
+
+    const disableRegister = (): boolean => {
+      if(isStarted === false && isCompleted === false) {
+        return false;
+      } else if(isStarted || inProgress || isCompleted) {
+        return true
+      } else {
+        return false 
+      }
+    };
 
     return (
       <TournamentRow>
@@ -298,14 +315,15 @@ const TournamentItem = ({
           <TournamentTimelineButton  
             status={'open'} 
             showIcons={false}
-            disabled={isStarted || inProgress || isCompleted || !(!isStarted && !isCompleted)}
+            disabled={disableRegister()}
+            onClick={handleRegister}
           >
-              <Link 
+              {/* <Link 
                 to={{pathname: '/payment', state: { tournamentId: id }}} 
                 onClick={saveTournamentId}
-              >
+              > */}
                 Register
-              </Link>
+              {/* </Link> */}
           </TournamentTimelineButton>
           <TournamentTimeline>Starts in {startsIn} days</TournamentTimeline>
         </TournamentCellStatus>
