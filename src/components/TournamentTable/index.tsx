@@ -86,6 +86,7 @@ const TournamentTableFooterButton = styled.button`
   padding: 10px 46px;
   background: #232323;
   border: none;
+  cursor: pointer;
 `;
 
 const TournamentTableTitle = styled(HeadingH2)`
@@ -102,6 +103,7 @@ const TournamentTable = ({
     styledHeader = false, 
     hasFooter = false, 
     footerButton,
+    onFooterButtonClick,
     tableHead
 }: ITournamentTable) => { 
   return (
@@ -113,18 +115,18 @@ const TournamentTable = ({
               <TournamentTableHeadItem key={`table-head-${i}`}>{item}</TournamentTableHeadItem>
             ))}
           </TournamentTableHead>
-          <TournamentTableBody>  
+          <TournamentTableBody>   
             {data.map((tournamentData: ITournament) => ( 
               <TournamentItem key={tournamentData.id} {...tournamentData} />
             ))}
           </TournamentTableBody>
           {hasFooter && (
               <TournamentTableFooter>
-                {footerButton && <TournamentTableFooterButton>{footerButton}</TournamentTableFooterButton>}
+                {footerButton && <TournamentTableFooterButton onClick={onFooterButtonClick}>{footerButton}</TournamentTableFooterButton>}
               </TournamentTableFooter>)}
         </StyledTournamentTable>
       </MainBannerWrapper>
   );
-}
+} 
 
 export default TournamentTable;

@@ -5,6 +5,7 @@ export interface ITournamentTable {
   styledHeader?: boolean;
   hasFooter?: boolean;
   footerButton?: string;
+  onFooterButtonClick?: () => void;
 }
 
 export interface IMockedTableData {
