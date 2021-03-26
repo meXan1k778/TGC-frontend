@@ -22,6 +22,7 @@ export function useProvideAuth() {
         LS.remove(['userData']);
         setUserData(null);
         setUserToken(null);
+        setTournamentId(null);
     };
 
     const saveTournament = (id: number | null) =>  setTournamentId(id);
