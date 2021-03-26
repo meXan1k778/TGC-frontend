@@ -110,33 +110,48 @@ const PaymentSuccessForm: React.FC = () => {
     
     const params: IIviteTeamMate = {
       creationToken: location.state, 
-      receivers: usersToInvite, 
+      receivers: [...usersToInvite], 
       teamName: data.teamName,
       platformId: data.platformId, 
       platformType: data.platform,
       token: token
     };
 
+
+    if(usersToInvite.length > 0 && usersToInvite.length < 3) {
+      const teammate = getValues('teammate');
+      if(teammate) {
+        params.receivers?.push(teammate)
+      }
+    }
+
     if(usersToInvite.length === 0) {
-      delete params.receivers;
+      const teammate = getValues('teammate');
+      if(teammate) {
+        params.receivers?.push(teammate)
+      } else {
+        delete params.receivers;
+      }
     }
 
-    try {
-      const response = await inviteTeammates(params);
-      setIsError(false);
-      setSnackbarOpened(true);
-      setSnackbarText(response.data.body.message);
+    
+    console.log('params', params)
+    // try {
+    //   const response = await inviteTeammates(params);
+    //   setIsError(false);
+    //   setSnackbarOpened(true);
+    //   setSnackbarText(response.data.body.message);
 
-      if(response.data.statusCode === 201) {
-        setTimeout(() => history.push('/tournament'), 3000);
-      } 
+    //   if(response.data.statusCode === 201) {
+    //     setTimeout(() => history.push('/tournament'), 3000);
+    //   } 
 
-    } catch (err: any) {
-      console.log(err)
-      setSnackbarOpened(true);
-      setIsError(true);
-      setSnackbarText(err?.response?.data?.body?.message);
-    }
+    // } catch (err: any) {
+    //   console.log(err)
+    //   setSnackbarOpened(true);
+    //   setIsError(true);
+    //   setSnackbarText(err?.response?.data?.body?.message);
+    // }
   }; 
 
   const handleAddTeammate = () => {

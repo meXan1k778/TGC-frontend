@@ -37,25 +37,25 @@ const TournamentTableHeadItem = styled.div`
   font-size: 12px;
   line-height: 14px;
 
-  // &:first-child {
-  //   flex-basis: 15%;
-  // }
+  &:first-child {
+    flex-basis: 15%;
+  }
 
-  // &:nth-child(2) {
-  //   flex-basis: 35%;
-  // }
+  &:nth-child(2) {
+    flex-basis: 35%;
+  }
 
-  // &:nth-child(3) {
-  //   flex-basis: 11%;
-  // }
+  &:nth-child(3) {
+    flex-basis: 11%;
+  }
 
-  // &:nth-child(4) {
-  //   flex-basis: 12%;
-  // }
+  &:nth-child(4) {
+    flex-basis: 12%;
+  }
 
-  // &:last-child {
-  //   flex-basis: 27%;
-  // }
+  &:last-child {
+    flex-basis: 27%;
+  }
 `;
 
 const TournamentTableFooter = styled.div`
@@ -106,7 +106,7 @@ const TournamentTable = ({
             ))}
           </TournamentTableHead>
           <TournamentTableBody>
-            {data.map((tournamentData: ITournament) => (
+            {data.map((tournamentData: ITournament) => ( 
               <TournamentItem key={tournamentData.id} {...tournamentData} />
             ))}
           </TournamentTableBody>

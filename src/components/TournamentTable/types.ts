@@ -42,6 +42,8 @@ export interface ITournament {
   createdAt: string;
   endAt: string;
   id: number;
+  isStarted: boolean;
+  inProgress: boolean;
   isCompleted: boolean;
   maxNumberOfTeams: number;
   name: string;

@@ -11,6 +11,7 @@ import rectangular from '../../images/rectangular.svg';
 import { device } from '../../styles/constants';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { toPounds } from '../../utils/helpers';
 
 const TournamentRow = styled.div`
   display: flex;
@@ -241,6 +242,8 @@ const TournamentItem = ({
     createdAt,
     endAt,
     id,
+    isStarted,
+    inProgress,
     isCompleted,
     maxNumberOfTeams,
     name,
@@ -249,38 +252,57 @@ const TournamentItem = ({
 }: ITournament) => {
     const startsIn = getDays('', startAt);
     const { saveTournament } = useAuth();
+
     const saveTournamentId = () => {
       saveTournament(id);
     }
-  return (
-    <TournamentRow>
-      <TournamentCellGameMode><img src={gameModeIcon} alt='game mode' /></TournamentCellGameMode>
-      <TournamentCellInfo>
-          <StatusBadgeWrapperStyled>
-            <StatusBadgeWrapper tournamentStatus={isCompleted} label='open' />
-          </StatusBadgeWrapperStyled>
-        <TournamentName>{name}</TournamentName>
-        <StatusWrapper>
-            <ShowOnDesktop>
-                <StatusBadgeWrapper tournamentStatus={isCompleted} label='open' />
-            </ShowOnDesktop>
-          <TournamentDate>{dateFormat(createdAt, 'mediumDate')}</TournamentDate>
-          <TournamentDetails>
-            <TournamentCellPrize>{amountCurrency === 'usd' ? '$' : '$'}{awardAmount}</TournamentCellPrize>
-            <TournamentCellTeamSize teamSize={maxNumberOfTeams}>{maxNumberOfTeams || '-'}</TournamentCellTeamSize>
-          </TournamentDetails>
-        </StatusWrapper>
-      </TournamentCellInfo>
-      <TournamentCellPrize>{amountCurrency === 'usd' ? '$' : '$'} {awardAmount}</TournamentCellPrize>
-      <TournamentCellTeamSize teamSize={maxNumberOfTeams}>{maxNumberOfTeams || '-'}</TournamentCellTeamSize>
-      <TournamentCellStatus>
-        <TournamentTimelineButton status='open' showIcons={false}>
-            <Link to={{pathname: '/payment', state: { tournamentId: id }}} onClick={saveTournamentId}>Register</Link>
-            </TournamentTimelineButton>
-        <TournamentTimeline>Starts in {startsIn} days</TournamentTimeline>
-      </TournamentCellStatus>
-    </TournamentRow>
-  );
+
+    return (
+      <TournamentRow>
+        <TournamentCellGameMode><img src={gameModeIcon} alt='game mode' /></TournamentCellGameMode>
+        <TournamentCellInfo>
+            <StatusBadgeWrapperStyled>
+              <StatusBadgeWrapper tournamentStatus={isCompleted} label='open' />
+            </StatusBadgeWrapperStyled>
+          <TournamentName>{name}</TournamentName>
+          <StatusWrapper>
+              <ShowOnDesktop>
+                  <StatusBadgeWrapper tournamentStatus={isCompleted} label='open' />
+              </ShowOnDesktop>
+            <TournamentDate>{dateFormat(createdAt, 'mediumDate')}</TournamentDate>
+            <TournamentDetails>
+              <TournamentCellPrize>
+                {amountCurrency === 'usd' ? '$' : '$'}{toPounds(awardAmount)}
+              </TournamentCellPrize>
+              <TournamentCellTeamSize teamSize={maxNumberOfTeams}>
+                {maxNumberOfTeams || '-'}
+              </TournamentCellTeamSize> 
+            </TournamentDetails>
+          </StatusWrapper>
+        </TournamentCellInfo>
+        <TournamentCellPrize>
+          {amountCurrency === 'usd' ? '$' : '$'} {toPounds(awardAmount)}
+        </TournamentCellPrize>
+        <TournamentCellTeamSize teamSize={maxNumberOfTeams}>
+          {maxNumberOfTeams || '-'}
+        </TournamentCellTeamSize>
+        <TournamentCellStatus>
+          <TournamentTimelineButton  
+            status={'open'} 
+            showIcons={false}
+            disabled={isStarted || inProgress || isCompleted || !(!isStarted && !isCompleted)}
+          >
+              <Link 
+                to={{pathname: '/payment', state: { tournamentId: id }}} 
+                onClick={saveTournamentId}
+              >
+                Register
+              </Link>
+          </TournamentTimelineButton>
+          <TournamentTimeline>Starts in {startsIn} days</TournamentTimeline>
+        </TournamentCellStatus>
+      </TournamentRow>
+    );
 }
 
 export default TournamentItem;
