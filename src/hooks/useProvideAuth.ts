@@ -5,7 +5,7 @@ import { LS, parsedLSitem } from '../utils/helpers';
 export function useProvideAuth() {
     const [userData, setUserData] = useState<IUserData | null>(parsedLSitem('userData'));
     const [userToken, setUserToken] = useState<IUserToken | null>(parsedLSitem('userToken'));
-    const [tournamentId, setTournamentId] = useState<number>(0);
+    const [tournamentId, setTournamentId] = useState<number | null>(null);
 
     const setUser = (userData: IUserData) => {
         LS.set('userData', JSON.stringify(userData));
@@ -24,7 +24,7 @@ export function useProvideAuth() {
         setUserToken(null);
     };
 
-    const saveTournament = (id: number) =>  setTournamentId(id);
+    const saveTournament = (id: number | null) =>  setTournamentId(id);
 
     return {
         userData,
