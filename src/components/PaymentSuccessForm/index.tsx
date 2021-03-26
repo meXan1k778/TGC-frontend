@@ -135,23 +135,22 @@ const PaymentSuccessForm: React.FC = () => {
     }
 
     
-    console.log('params', params)
-    // try {
-    //   const response = await inviteTeammates(params);
-    //   setIsError(false);
-    //   setSnackbarOpened(true);
-    //   setSnackbarText(response.data.body.message);
+    try {
+      const response = await inviteTeammates(params);
+      setIsError(false);
+      setSnackbarOpened(true);
+      setSnackbarText(response.data.body.message);
 
-    //   if(response.data.statusCode === 201) {
-    //     setTimeout(() => history.push('/tournament'), 3000);
-    //   } 
+      if(response.data.statusCode === 201) {
+        setTimeout(() => history.push('/tournament'), 3000);
+      } 
 
-    // } catch (err: any) {
-    //   console.log(err)
-    //   setSnackbarOpened(true);
-    //   setIsError(true);
-    //   setSnackbarText(err?.response?.data?.body?.message);
-    // }
+    } catch (err: any) {
+      console.log(err)
+      setSnackbarOpened(true);
+      setIsError(true);
+      setSnackbarText(err?.response?.data?.body?.message);
+    }
   }; 
 
   const handleAddTeammate = () => {
