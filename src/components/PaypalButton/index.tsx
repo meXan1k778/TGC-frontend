@@ -31,9 +31,8 @@ export default function PayPalButton({ tournamentId, clientId, currencyCode, mod
         document.body.appendChild(script);
     };
 
-
     useEffect(() => {
-        if (window !== undefined && window.paypal === undefined) {
+        if (window !== undefined) {
             addPayPalSdk();
         }
     }, []);

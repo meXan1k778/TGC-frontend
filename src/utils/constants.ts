@@ -16,9 +16,9 @@ export const tableHead: string[] = [
     'Tournament date', 
     'price', 
     'Teams', 
+    'game', 
+    'game mode',
     'registration',
-     // 'game', 
-    // 'game mode',
 ];
 
 export const usaStates: string[] = [ 

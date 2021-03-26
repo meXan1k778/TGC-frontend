@@ -286,6 +286,14 @@ const TournamentItem = ({
         <TournamentCellTeamSize teamSize={maxNumberOfTeams}>
           {maxNumberOfTeams || '-'}
         </TournamentCellTeamSize>
+
+        <TournamentCellPrize>
+          Call of Duty: Warzone
+        </TournamentCellPrize>
+        <TournamentCellPrize>
+          Singles, Duos, Trios, Quads
+        </TournamentCellPrize>
+
         <TournamentCellStatus>
           <TournamentTimelineButton  
             status={'open'} 
